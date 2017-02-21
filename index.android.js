@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Header from './src/components/Header';
 import Row from './src/components/Row';
+import Footer from './src/components/Footer';
 import demoData from './demoData';
 
 export default class listViewExample extends Component {
@@ -18,6 +19,7 @@ export default class listViewExample extends Component {
         dataSource={this.state.dataSource}
         renderHeader={() => <Header />}
         renderRow={(data) => <Row {...data} />}
+        renderFooter={() => <Footer />}
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
       />
     );
