@@ -12,6 +12,30 @@ import Footer from './src/components/Footer';
 import demoData from './demoData';
 
 export default class listViewExample extends Component {
+  constructor() {
+    super();
+    
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+    });
+
+    const dataBlob = this.formatData(demoData);
+    
+    this.state = {
+      dataSource: ds.cloneWithRows(dataBlob),
+    };
+  }
+
+  formatData(data) {
+    let dataBlob = {};
+
+    data.map((person, index) => {
+      dataBlob[index] = person;
+    });
+
+    return dataBlob;
+  }
+
   render() {
     return (
       <ListView
